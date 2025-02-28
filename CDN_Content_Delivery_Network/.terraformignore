@@ -1,0 +1,10 @@
+# Ignore .log files
+*.log
+
+# Ignore the .terraform directory (it's already ignored by Git, but Terraform can still use it)
+.terraform/
+
+# Ignore backup files (optional)
+*.bak
+
+
