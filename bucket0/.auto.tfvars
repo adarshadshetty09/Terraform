@@ -1,6 +1,9 @@
 project_id = "spheric-mesh-465208-h9"
+
+## bucket-01 ##
 bucket_name = "ybatarball"
 location = "asia-south1"
+region = "asia-south1"
 bucket_encryption = ({
     default_kms_key_name = ""
 })
@@ -26,16 +29,28 @@ bucket_labels = {
 set_roles = true
 
 iam_members = {
-    role1 = {
-        role = "roles/storage.objectViewer"
-        member = [
-            "add the service account"
-        ]
-    },
-    role2 = {
-        role = "roles/storage.objectViewer"
-        member = [
-            "add the service account"
-        ]
-    },
+  role_01 = {
+    role = "roles/storage.objectViewer"
+    member = [
+      "serviceAccount:packer@spheric-mesh-465208-h9.iam.gserviceaccount.com"
+    ]
+  },
+  role_02 = {
+    role = "roles/storage.objectCreator"
+    member = [
+        "serviceAccount:packer@spheric-mesh-465208-h9.iam.gserviceaccount.com"
+    ]
+  },
+  role_03 = {
+    role = "roles/storage.legacyBucketReader"
+    member = [
+        "serviceAccount:packer@spheric-mesh-465208-h9.iam.gserviceaccount.com"
+    ]
+  },
+    role_03 = {
+    role = "roles/storage.legacyBucketWriter"
+    member = [
+        "serviceAccount:packer@spheric-mesh-465208-h9.iam.gserviceaccount.com"
+    ]
+  }
 }

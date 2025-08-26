@@ -9,8 +9,15 @@ terraform {
 
 
 provider "google" {
-  project = "spheric-mesh-465208-h9"
-  region  = "us-central1"
+  project = var.project_id
+  region  = var.region
+}
+
+
+
+variable "region" {
+  type = string
+  # default = "asia-south1"  # or leave it out if it's already set in .auto.tfvars
 }
 
 
@@ -82,10 +89,6 @@ variable "custom_placement_config" {
   default = null
 }
 
-variable "set_roles" {
-  type = bool
-}
-
 variable "iam_members" {
   description = "The list pf IAM Members to grant permission on the bucket."
   default     = {}
@@ -95,6 +98,11 @@ variable "bucket_labels" {
   type    = map(string)
   default = {}
 }
+
+variable "set_roles" {
+  type = bool
+}
+
 
 resource "google_storage_bucket" "test" {
   name                        = var.bucket_name
@@ -135,6 +143,12 @@ resource "google_storage_bucket" "test" {
 }
 
 
+resource "google_storage_bucket_iam_binding" "bucket_permission" {
+  for_each = var.set_roles ? var.iam_members : {}
+  bucket   = google_storage_bucket.test.name
+  role     = each.value.role
+  members  = each.value.member
+}
 
 
 
