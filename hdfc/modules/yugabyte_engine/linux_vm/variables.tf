@@ -14,7 +14,7 @@ variable "enable_external_ip" {
 }
 
 variable "instance_count" {
-  default = 2
+  default = 1
 }
 
 variable "machine_name" {
@@ -92,6 +92,13 @@ variable "labels" {
 variable "internal_ip" {
   description = "value"
 }
+
+variable "internal_ip_base" {
+  description = "Base IP in subnet"
+  type        = string
+  default     = "10.128.0.5"
+}
+
 
 variable "subnetwork" {
   description = "value"

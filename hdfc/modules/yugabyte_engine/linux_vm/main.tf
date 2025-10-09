@@ -87,16 +87,17 @@ resource "google_compute_disk" "boot_yba_disk" {
 ##############################
 
 resource "google_compute_address" "static_internal_ip_address" {
-    count = var.instance_count
-  name = "${var.machine_name}-int-ip-${count.index +1}"
+  count       = var.instance_count
+  name        = "${var.machine_name}-int-ip-${count.index +1}"
   address_type = "INTERNAL"
-  address = var.internal_ip 
-  subnetwork = var.subnetwork
-  region = var.region 
+  subnetwork  = var.subnetwork
+  region      = var.region
+
   lifecycle {
     prevent_destroy = false
   }
 }
+
 
 
 ##############################
@@ -121,7 +122,7 @@ resource "google_compute_instance" "gce_vm" {
   count = var.instance_count
   name = local.instance_name[count.index]
   machine_type = var.machine_type
-  zone = element(var.machine_zone, count.index % length(var.var.machine_zone))
+  zone = element(var.machine_zone, count.index % length(var.machine_zone))
   allow_stopping_for_update = true
   deletion_protection = var.vm_deletion_protect
   tags = var.network_tag
@@ -135,7 +136,8 @@ resource "google_compute_instance" "gce_vm" {
   network_interface {
     network = var.network 
     subnetwork = var.subnetwork
-    network_ip = google_compute_address.static_internal_ip_address
+    network_ip = google_compute_address.static_internal_ip_address[count.index].address
+
 
      dynamic "access_config" {
     for_each = local.access_config
@@ -183,3 +185,9 @@ resource "google_compute_instance" "gce_vm" {
     }
   }
 }
+
+
+
+#####################################################
+# persistent attached disk creation and attach to vm 
+#####################################################
