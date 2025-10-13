@@ -12,3 +12,14 @@ variable "region" {
   description = "Region to deploy resources"
   type        = string
 }
+
+
+variable "yugabyte_clusters" {
+
+}
+
+
+
+variable "enable_boot_disk" {
+  default = false
+}
