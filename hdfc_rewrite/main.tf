@@ -27,6 +27,7 @@ module "test-yugabyte-cluster" {
   machine_name                = each.value.machine_name
   instance_count              = each.value.instance_count
   attached_disks_per_instance = each.value.attached_disks_per_instance
+  attached_persistent_disk_sizes = each.value.attached_persistent_disk_sizes  
   machine_zone                = each.value.machine_zone
 
   # Snapshot policy

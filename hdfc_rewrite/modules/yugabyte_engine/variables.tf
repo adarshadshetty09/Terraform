@@ -151,7 +151,7 @@ variable "attached_disks_per_instance" {
 variable "attached_persistent_disk_sizes" {
   description = "List of disk sizes (GB) for attached disks"
   type        = list(number)
-  default     = [100, 200, 100, 50] # Yugabyte=100GB, Data1=200GB, Wal1=100GB, Shared=50GB
+  # default     = [100, 200, 100, 50] # Yugabyte=100GB, Data1=200GB, Wal1=100GB, Shared=50GB
 }
 
 variable "data_disk_with_snapshot" {
