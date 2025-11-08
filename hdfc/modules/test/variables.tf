@@ -111,3 +111,6 @@ variable "local_disk_count" {
 variable "shielded_instance_config" {
   
 }
+
+
+

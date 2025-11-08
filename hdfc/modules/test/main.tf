@@ -100,6 +100,9 @@ resource "google_compute_disk" "boot_gce_disk" {
 }
 
 
+
+
+
 ##############################################
 # Snapshot Policy Attachment for Boot Disks
 ##############################################

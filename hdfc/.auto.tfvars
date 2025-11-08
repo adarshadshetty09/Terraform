@@ -23,7 +23,7 @@ yugabyte_clusters = {
     retention_days                  = 7
     storage_location                = "us"  
     enable_boot_disk                = true
-    log_disk_size                   = 50
+    log_disk_size                   = 10
     log_disk_type                   = "pd-balanced"
     instance_with_bootdisk_snapshot = false
     snapshot_selflink               = null
@@ -48,5 +48,9 @@ yugabyte_clusters = {
       enable_vtpm                 = true
       enable_integrity_monitoring = true
     }
+    extra_disk_count     = 3
+extra_disk_size_gb   = 10
+extra_disk_type      = "pd-balanced"
+
   }
 }
