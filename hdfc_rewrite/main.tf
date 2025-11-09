@@ -22,13 +22,13 @@ module "test-yugabyte-cluster" {
   source     = "./modules/yugabyte_engine"
 
   # Core configuration
-  enable_external_ip          = each.value.enable_external_ip
-  enable_shielded_vm          = each.value.enable_shielded_vm
-  machine_name                = each.value.machine_name
-  instance_count              = each.value.instance_count
-  attached_disks_per_instance = each.value.attached_disks_per_instance
-  attached_persistent_disk_sizes = each.value.attached_persistent_disk_sizes  
-  machine_zone                = each.value.machine_zone
+  enable_external_ip             = each.value.enable_external_ip
+  enable_shielded_vm             = each.value.enable_shielded_vm
+  machine_name                   = each.value.machine_name
+  instance_count                 = each.value.instance_count
+  attached_disks_per_instance    = each.value.attached_disks_per_instance
+  attached_persistent_disk_sizes = each.value.attached_persistent_disk_sizes
+  machine_zone                   = each.value.machine_zone
 
   # Snapshot policy
   policy_name       = each.value.policy_name
@@ -37,9 +37,9 @@ module "test-yugabyte-cluster" {
   storage_locations = each.value.storage_locations
 
   # Boot disk
-  enable_boot_disk                = each.value.enable_boot_disk
-  boot_disk_size                  = each.value.boot_disk_size
-  boot_disk_type                  = each.value.boot_disk_type
+  enable_boot_disk = each.value.enable_boot_disk
+  boot_disk_size   = each.value.boot_disk_size
+  boot_disk_type   = each.value.boot_disk_type
 
   instance_with_bootdisk_snapshot = each.value.instance_with_bootdisk_snapshot
   snapshot_selflink               = each.value.snapshot_selflink

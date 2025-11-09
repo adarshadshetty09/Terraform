@@ -386,3 +386,33 @@ Separates **logs** from other data → easier backup, cleanup, and retention.
 
 Would you like me to show this as a **Terraform architecture diagram** (VMs + disks + snapshot policy + internal/external IP relationships)?
 It would visually explain how all these resources link together in your setup.
+
+## To get the network details
+
+```
+gcloud compute networks subnets describe yugabyte-sub-1 --region=us-central1
+```
+
+```
+creationTimestamp: '2025-11-05T05:14:57.460-08:00'
+description: 'yugabyte subnet one '
+enableFlowLogs: false
+fingerprint: 4pwXO6YXer8=
+gatewayAddress: 10.0.0.1
+id: '525792596696953662'
+ipCidrRange: 10.0.0.0/24
+kind: compute#subnetwork
+logConfig:
+  aggregationInterval: INTERVAL_5_SEC
+  enable: false
+  flowSampling: 0.5
+  metadata: INCLUDE_ALL_METADATA
+name: yugabyte-sub-1
+network: https://www.googleapis.com/compute/v1/projects/apt-index-474313-e9/global/networks/vpc-yugabyte-terraform-cluster
+privateIpGoogleAccess: false
+privateIpv6GoogleAccess: DISABLE_GOOGLE_ACCESS
+purpose: PRIVATE
+region: https://www.googleapis.com/compute/v1/projects/apt-index-474313-e9/regions/us-central1
+selfLink: https://www.googleapis.com/compute/v1/projects/apt-index-474313-e9/regions/us-central1/subnetworks/yugabyte-sub-1
+stackType: IPV4_ONLY
+```
