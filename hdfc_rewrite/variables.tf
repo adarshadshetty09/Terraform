@@ -23,7 +23,3 @@ variable "region" {
 variable "yugabyte_clusters" {
   description = "Configuration for yugabyte DB nodes"
 }
-
-variable "yugabyte_control_node" {
-  description = "Configuration for yugabyte control node"
-}

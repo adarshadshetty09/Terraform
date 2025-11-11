@@ -258,3 +258,28 @@ variable "storage_locations" {
   type        = string
 }
 
+##################################################################################################################
+
+variable "enable_yugabyte_disk" {
+  description = "Enable Yugabyte disk creation & attachment"
+  type        = bool
+  default     = false
+}
+
+variable "enable_data1_disk" {
+  description = "Enable Data1 disk creation & attachment"
+  type        = bool
+  default     = false
+}
+
+variable "enable_wal1_disk" {
+  description = "Enable Wal1 disk creation & attachment"
+  type        = bool
+  default     = false
+}
+
+variable "enable_shared_disk" {
+  description = "Enable Shared disk creation & attachment"
+  type        = bool
+  default     = false
+}
