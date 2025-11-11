@@ -105,7 +105,7 @@ variable "enable_boot_disk" {
 variable "log_disk_size" {
   description = "Size (GB) of the boot disk"
   type        = number
-  default     = 50
+  default     = null
 }
 
 variable "log_disk_type" {
@@ -145,7 +145,7 @@ variable "enable_attached_persistant_disk" {
 variable "attached_disks_per_instance" {
   description = "Number of attached persistent disks per instance"
   type        = number
-  default     = 4
+  default     = null
 }
 
 variable "attached_persistent_disk_sizes" {
@@ -179,7 +179,7 @@ variable "enable_log_disk" {
 variable "boot_disk_size" {
   description = "Size (GB) for log disk"
   type        = number
-  default     = 30
+  default     = null
 }
 
 variable "boot_disk_type" {
