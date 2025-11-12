@@ -13,6 +13,13 @@ variable "project_id" {
   type        = string
 }
 
+# KMS Key Self Link
+variable "kms_key_self_link" {
+  description = "The full resource path of the KMS crypto key to encrypt disks (CMEK)"
+  type        = string
+  default     = null
+}
+
 # GCP Region
 variable "region" {
   description = "Default region for GCP resources."
@@ -23,3 +30,5 @@ variable "region" {
 variable "yugabyte_clusters" {
   description = "Configuration for yugabyte DB nodes"
 }
+
+

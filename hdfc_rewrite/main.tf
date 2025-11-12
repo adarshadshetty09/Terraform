@@ -48,7 +48,7 @@ module "yugabyte-cluster" {
   enable_wal1_disk     = each.value.enable_wal1_disk
   enable_shared_disk   = each.value.enable_shared_disk
 
-##################################################
+  ##################################################
   instance_with_bootdisk_snapshot = each.value.instance_with_bootdisk_snapshot
   snapshot_selflink               = each.value.snapshot_selflink
   instance_image_selflink         = each.value.instance_image_selflink
