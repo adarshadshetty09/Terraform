@@ -83,13 +83,13 @@
       ansible.builtin.debug: 
         var: setPath.stdout_lines
     
-    - name: vm.max_map_coun
+    - name: vm.max_map_count
       ansible.builtin.command: sudo sysctl -w vm.max_map_count=262144 && bash -c 'sysctl vm.max_map_count=262144 >> /etc/sysctl.conf'
-      register: vm_max_map_coun
+      register: vm_max_map_count
 
-    - name: Print the vm.max_map_coun
+    - name: Print the vm.max_map_count
       ansible.builtin.debug: 
-        var: vm_max_map_coun.
+        var: vm_max_map_count
         
     - name: Validate The Change
       ansible.builtin.command: sysctl vm.max_map_count
