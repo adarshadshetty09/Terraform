@@ -28,7 +28,7 @@
     
     - name: Print the output for ulimit
       ansible.builtin.debug: 
-        vars: ulimit.stdout_lines
+        var: ulimit.stdout_lines
 
     - name: Set system ulimits for YugabyteDB in limits.conf
       ansible.builtin.lineinfile:
@@ -48,7 +48,7 @@
     
     - name: Print the output for ulimit after set
       ansible.builtin.debug: 
-        vars: ulimit_set.stdout_lines
+        var: ulimit_set.stdout_lines
 
 
     - name: Configure nproc limit in /etc/security/limits.d/20-nproc.conf
@@ -73,7 +73,7 @@
 
     - name: Print the vm.swappiness
       ansible.builtin.debug: 
-        vars: kernel_parameter.stdout_lines
+        var: kernel_parameter.stdout_lines
     
     - name: Setup path for core file 
       ansible.builtin.command: sudo sysctl kernel.core_pattern=/home/yugabyte/cores/core_%p_%t_%E\
@@ -81,7 +81,7 @@
 
     - name: Print the for file 
       ansible.builtin.debug: 
-        vars: setPath.stdout_lines
+        var: setPath.stdout_lines
     
     - name: vm.max_map_coun
       ansible.builtin.command: sudo sysctl -w vm.max_map_count=262144 && bash -c 'sysctl vm.max_map_count=262144 >> /etc/sysctl.conf'
@@ -89,7 +89,7 @@
 
     - name: Print the vm.max_map_coun
       ansible.builtin.debug: 
-        vars: vm_max_map_coun.
+        var: vm_max_map_coun.
         
     - name: Validate The Change
       ansible.builtin.command: sysctl vm.max_map_count
@@ -97,7 +97,7 @@
 
     - name: Print the max_count
       ansible.builtin.debug: 
-        vars: max_count.stdout_lines
+        var: max_count.stdout_lines
 
     - name: Enable transparent hugepages
       ansible.builtin.command: cat /sys/kernel/mm/transparent_hugepage/enabled
@@ -105,7 +105,7 @@
 
     - name: Print the thp
       ansible.builtin.debug: 
-        vars: thp.stdout_lines
+        var: thp.stdout_lines
     
 
 
