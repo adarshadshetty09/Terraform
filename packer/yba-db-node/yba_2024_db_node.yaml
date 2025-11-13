@@ -76,7 +76,7 @@
         var: kernel_parameter.stdout_lines
     
     - name: Setup path for core file 
-      ansible.builtin.command: sudo sysctl kernel.core_pattern=/home/yugabyte/cores/core_%p_%t_%E\
+      ansible.builtin.command: sudo sysctl kernel.core_pattern=/home/yugabyte/cores/core_%p_%t_%E
       register: setPath
 
     - name: Print the for file 
