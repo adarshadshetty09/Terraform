@@ -37,7 +37,7 @@ build {
   }
  
   provisioner "ansible" {
-    playbook_file   = "./yba_2024_db_node.pkr.hcl"
+    playbook_file   = "./yba_2024_db_node.yaml"
     use_proxy       = false
   }
 }
