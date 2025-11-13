@@ -18,7 +18,7 @@ source "googlecompute" "yba-gcp" {
   machine_type            = "e2-standard-4"
   source_image_family     = "rhel-9"
   source_image_project_id = ["rhel-cloud"] # ← FIXED HERE
-  image_name              = "yba-gcp-{{timestamp}}"
+  image_name              = "yba-gcp-db-{{timestamp}}"
   image_family            = "yba-gcp-image"
   disk_size               = 20
   disk_type               = "pd-ssd"
