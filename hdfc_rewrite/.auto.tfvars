@@ -7,7 +7,7 @@ kms_key_self_link = "projects/apt-index-474313-e9/locations/us-central1/keyRings
 
 yugabyte_clusters = {
   yba-control-node = {
-    enable_external_ip              = false
+    enable_external_ip              = true
     enable_shielded_vm              = true
     machine_name                    = "yba"
     instance_count                  = 1
@@ -27,7 +27,7 @@ yugabyte_clusters = {
     boot_disk_type                  = "pd-balanced"
     instance_with_bootdisk_snapshot = false
     snapshot_selflink               = null
-    instance_image_selflink         = "projects/apt-index-474313-e9/global/images/yba-gcp-1762956627"
+    instance_image_selflink         = "projects/apt-index-474313-e9/global/images/yba-gcp-1763035884"
     kms_key_self_link               = null
     labels                          = {}
     internal_ip                     = ["10.0.0.10"]
@@ -51,7 +51,7 @@ yugabyte_clusters = {
   },
 
   yba-db-node = {
-    enable_external_ip              = false
+    enable_external_ip              = true
     enable_shielded_vm              = true
     machine_name                    = "yb-db-node"
     instance_count                  = 1
@@ -71,7 +71,7 @@ yugabyte_clusters = {
     boot_disk_type                  = "pd-balanced"
     instance_with_bootdisk_snapshot = false
     snapshot_selflink               = null
-    instance_image_selflink         = "projects/apt-index-474313-e9/global/images/yba-gcp-1763029698"
+    instance_image_selflink         = "projects/apt-index-474313-e9/global/images/yba-gcp-db-1763036537"
     kms_key_self_link               = null
     labels                          = {}
     internal_ip                     = ["10.0.0.11","10.0.0.12"]
