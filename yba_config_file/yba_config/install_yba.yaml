@@ -10,7 +10,6 @@
     skip_preflight: "disk-availability,memory,cpu"
 
   tasks:
-
     # ---------------------------------------------------------
     # STEP 0: Backup License Before Clean
     # ---------------------------------------------------------
@@ -37,7 +36,7 @@
       args:
         chdir: "{{ yba_dir }}"
       register: clean_output
-      failed_when: false   # clean may error if nothing installed
+      failed_when: false
 
     - debug:
         var: clean_output.stdout
@@ -45,7 +44,7 @@
     # ---------------------------------------------------------
     # STEP 2: Restore License After Clean
     # ---------------------------------------------------------
-    - name: Ensure /opt/yba-ctl directory exists after clean
+    - name: Ensure /opt/yba-ctl directory exists
       file:
         path: "{{ yba_opt_dir }}"
         state: directory
@@ -72,6 +71,26 @@
 
     - debug:
         var: preflight_output.stdout
+
+
+  
+    # ---------------------------------------------------------
+    # STEP 2.5: Update installRoot
+    # ---------------------------------------------------------
+    - name: Update installRoot in yba-ctl.yml
+      ansible.builtin.replace:
+        path: /opt/yba-ctl/yba-ctl.yml
+        regexp: '^installRoot:.*'
+        replace: 'installRoot: "/mnt/yba"'
+
+    - name: Verify updated installRoot
+      shell: "grep '^installRoot' /opt/yba-ctl/yba-ctl.yml"
+      register: installroot_verify
+      changed_when: false
+
+    - debug:
+        msg: "{{ installroot_verify.stdout }}"
+
 
     # ---------------------------------------------------------
     # STEP 4: INSTALL
