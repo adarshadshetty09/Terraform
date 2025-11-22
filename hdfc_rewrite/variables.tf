@@ -27,8 +27,14 @@ variable "region" {
 }
 
 # Yugabyte Cluster Definitions
-variable "yugabyte_clusters" {
-  description = "Configuration for yugabyte DB nodes"
+variable "yugabyte_clusters_project1" {
+  description = "Configuration For Yugabyte Cluster For Project-1"
 }
+
+
+variable "nfs" {
+  description = "Configuration For Yugabyte Cluster For Project-1"
+}
+
 
 
