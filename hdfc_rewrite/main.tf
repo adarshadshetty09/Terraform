@@ -73,6 +73,16 @@ module "yugabyte-cluster-project-1" {
   # Shielded VM and Local disks
   local_disk_count         = each.value.local_disk_count
   shielded_instance_config = each.value.shielded_instance_config
+
+  # In your main.tf file for both module blocks:
+
+  # Snapshot policy attachment control
+  enable_boot_disk_snapshot_attach     = each.value.enable_boot_disk_snapshot_attach
+  enable_yugabyte_disk_snapshot_attach = each.value.enable_yugabyte_disk_snapshot_attach
+  enable_data1_disk_snapshot_attach    = each.value.enable_data1_disk_snapshot_attach
+  enable_wal1_disk_snapshot_attach     = each.value.enable_wal1_disk_snapshot_attach
+  enable_shared_disk_snapshot_attach   = each.value.enable_shared_disk_snapshot_attach
+
 }
 
 
@@ -136,4 +146,13 @@ module "yugabyte-cluster-project-1-for-nfs" {
   # Shielded VM and Local disks
   local_disk_count         = each.value.local_disk_count
   shielded_instance_config = each.value.shielded_instance_config
+
+  # In your main.tf file for both module blocks:
+
+  # Snapshot policy attachment control
+  enable_boot_disk_snapshot_attach     = each.value.enable_boot_disk_snapshot_attach
+  enable_yugabyte_disk_snapshot_attach = each.value.enable_yugabyte_disk_snapshot_attach
+  enable_data1_disk_snapshot_attach    = each.value.enable_data1_disk_snapshot_attach
+  enable_wal1_disk_snapshot_attach     = each.value.enable_wal1_disk_snapshot_attach
+  enable_shared_disk_snapshot_attach   = each.value.enable_shared_disk_snapshot_attach
 }

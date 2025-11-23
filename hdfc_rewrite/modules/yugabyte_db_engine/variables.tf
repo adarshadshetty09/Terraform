@@ -283,3 +283,36 @@ variable "enable_shared_disk" {
   type        = bool
   default     = false
 }
+
+
+# Add these new variables to the module's variables.tf file
+
+variable "enable_boot_disk_snapshot_attach" {
+  description = "Controls whether the snapshot policy is attached to the boot disk."
+  type        = bool
+  default     = false
+}
+
+variable "enable_yugabyte_disk_snapshot_attach" {
+  description = "Controls whether the snapshot policy is attached to the yugabyte disk."
+  type        = bool
+  default     = false
+}
+
+variable "enable_data1_disk_snapshot_attach" {
+  description = "Controls whether the snapshot policy is attached to the data1 disk."
+  type        = bool
+  default     = false
+}
+
+variable "enable_wal1_disk_snapshot_attach" {
+  description = "Controls whether the snapshot policy is attached to the wal1 disk."
+  type        = bool
+  default     = false
+}
+
+variable "enable_shared_disk_snapshot_attach" {
+  description = "Controls whether the snapshot policy is attached to the shared disk."
+  type        = bool
+  default     = false
+}

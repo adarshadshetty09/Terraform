@@ -83,7 +83,8 @@ resource "google_compute_disk" "boot_gce_disk" {
 # Boot Disk Snapshot Policy
 ###############################################
 resource "google_compute_disk_resource_policy_attachment" "boot_diskpolicy_attach" {
-  count = var.enable_boot_disk == true ? var.instance_count : 0
+  # count = var.enable_boot_disk == true ? var.instance_count : 0
+  count = var.enable_boot_disk_snapshot_attach == true ? var.instance_count : 0
   name  = google_compute_resource_policy.snapshot_policy.name
   disk  = google_compute_disk.boot_gce_disk[count.index].name
   zone  = element(var.machine_zone, count.index % length(var.machine_zone))
@@ -205,7 +206,6 @@ resource "google_compute_instance" "gce_vm" {
 resource "google_compute_disk" "yugabyte" {
   # count = var.enable_attached_persistant_disk ? var.instance_count : 0
   count = var.enable_yugabyte_disk ? var.instance_count : 0
-
   name  = "${var.machine_name}${count.index + 1}-yugabyte"
   size  = element(var.attached_persistent_disk_sizes, 0)
   type  = "pd-ssd"
@@ -228,7 +228,8 @@ resource "google_compute_attached_disk" "yugabyte_attach" {
 
 resource "google_compute_disk_resource_policy_attachment" "yugabyte_snapshot_attach" {
   # count = var.enable_attached_persistant_disk ? var.instance_count : 0
-  count = var.enable_yugabyte_disk ? var.instance_count : 0
+  # count = var.enable_yugabyte_disk ? var.instance_count : 0
+  count = var.enable_yugabyte_disk_snapshot_attach == true ? var.instance_count : 0
   name  = google_compute_resource_policy.snapshot_policy.name
   disk  = google_compute_disk.yugabyte[count.index].name
   zone  = element(var.machine_zone, count.index % length(var.machine_zone))
@@ -260,7 +261,8 @@ resource "google_compute_attached_disk" "data1_attach" {
 
 resource "google_compute_disk_resource_policy_attachment" "data1_snapshot_attach" {
   # count = var.enable_attached_persistant_disk ? var.instance_count : 0
-  count = var.enable_data1_disk ? var.instance_count : 0
+  # count = var.enable_data1_disk ? var.instance_count : 0
+  count = (var.enable_data1_disk && var.enable_data1_disk_snapshot_attach) ? var.instance_count : 0
   name  = google_compute_resource_policy.snapshot_policy.name
   disk  = google_compute_disk.data1[count.index].name
   zone  = element(var.machine_zone, count.index % length(var.machine_zone))
@@ -292,7 +294,8 @@ resource "google_compute_attached_disk" "wal1_attach" {
 
 resource "google_compute_disk_resource_policy_attachment" "wal1_snapshot_attach" {
   # count = var.enable_attached_persistant_disk ? var.instance_count : 0
-  count = var.enable_wal1_disk ? var.instance_count : 0
+  # count = var.enable_wal1_disk ? var.instance_count : 0
+  count = (var.enable_wal1_disk && var.enable_wal1_disk_snapshot_attach) ? var.instance_count : 0
   name  = google_compute_resource_policy.snapshot_policy.name
   disk  = google_compute_disk.wal1[count.index].name
   zone  = element(var.machine_zone, count.index % length(var.machine_zone))
@@ -324,7 +327,8 @@ resource "google_compute_attached_disk" "shared_attach" {
 
 resource "google_compute_disk_resource_policy_attachment" "shared_snapshot_attach" {
   # count = var.enable_attached_persistant_disk ? var.instance_count : 0
-  count = var.enable_shared_disk ? var.instance_count : 0
+  # count = var.enable_shared_disk ? var.instance_count : 0
+  count = (var.enable_shared_disk && var.enable_shared_disk_snapshot_attach) ? var.instance_count : 0
   name  = google_compute_resource_policy.snapshot_policy.name
   disk  = google_compute_disk.shared[count.index].name
   zone  = element(var.machine_zone, count.index % length(var.machine_zone))
